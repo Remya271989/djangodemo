@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="container-fluid bg-secondary">
+
+<div style="height:100px;width:100%"></div>
+<h3 style="text-align:center;">Shopping Cart</h3>
+
+
+<!--    {{cart}}-->
+    <div class="cart-section mt-100 mb-100">
+		<div class="container"><h3 style="text-align:center;">Cart Items</h3>
+			<div class="row">
+				<div class="col-lg-8 col-md-12">
+					<div class="cart-table-wrap">
+						<table class="cart-table">
+							<thead class="cart-table-head">
+								<tr class="table-head-row">
+                                    <th class="product-image"><strong>Product Image</strong></th>
+									<th class="product-name"><strong>Name</strong></th>
+                                    <th class="product-price"><strong>Unit Price/Quantity</strong></th>
+									<th class="product-total"><strong>Total</strong></th>
+									<th></th>
+								</tr>
+							</thead>
+							<tbody>
+
+								{% for i in cart %}
+								<tr class="table-body-row">
+
+									<td class="product-image"><img src="{{i.product.image.url}}" alt=""></td>
+									<td class="product-name"><strong>{{i.product.name}}</strong></td>
+									<td class="product-price product-quantity">Quantity : {{i.quantity}} <br> Price : {{i.product.price}}</td>
+									<td class="product-total"><strong>{{i.total}}</strong></td>
+									<td>
+										{% if i.product.stock > 0 %}
+										<a href="{% url 'cart:addtocart' i.product.id %}"><i class="fa-solid fa-circle-plus text-light fs-4"></i></a>
+									<a href="{% url 'cart:cart_remove' i.product.id %}"><i class="fa-solid fa-circle-minus text-light fs-4"></i></a>
+									<a href="{% url 'cart:cart_delete' i.product.id %}"><i class="fa-solid fa-trash-can text-light fs-4"></i></a>
+										{% else %}
+									<a href="{% url 'cart:cart_remove' i.product.id %}"><i class="fa-solid fa-circle-minus text-light fs-4"></i></a>
+									<a href="{% url 'cart:cart_delete' i.product.id %}"><i class="fa-solid fa-trash-can text-light fs-4"></i></a>
+									{% endif %}
+									</td>
+
+								</tr>
+							{% endfor %}
+
+							</tbody>
+						</table>
+
+					</div>
+				</div>
+
+				<div class="col-lg-4">
+					<div class="total-section">
+						<table class="total-table">
+							<thead class="total-table-head">
+								<tr class="table-total-row">
+                                    <th colspan="2" style="text-align:center;"><strong>Check Out</strong></th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr class="total-data">
+									<td><strong>Subtotal: </strong></td>
+									<td><strong>{{total}}</strong></td>
+								</tr>
+								<tr class="total-data">
+									<td><strong>Shipping: </strong></td>
+									<td>45</td>
+								</tr>
+								<tr class="total-data">
+									<td><strong>Total Price: </strong></td>
+									<td><strong>{{totalprice}}</strong></td>
+								</tr>
+							</tbody>
+						</table>
+						<div class="d-flex justify-content-between">
+							<a href="{% url 'cart:order_form' %}" class="btn btn-success">Place Order</a>
+							<a href="" class="btn btn-danger">Continue Shopping</a>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+
+
+</div>
+
+{% endblock %}

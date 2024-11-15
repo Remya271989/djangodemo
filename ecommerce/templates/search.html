@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="container-fluid bg-secondary">
+
+<div style="height:100px;width:100%"></div>
+<h3 style="text-align:center;">You have searched for {{query}}</h3>
+
+	<div class="row p-5 bg-secondary">
+	{% for i in pro %}
+				<div class="col-lg-4 col-md-6">
+					<div class="single-latest-news card mx-auto bg-danger" style="width:25rem;">
+						<a href="{% url 'shop:product_details' i.id %}"><img src="{{i.image.url}}" height="200px" width="100%"></a>
+						<div class="news-text-box">
+							<h3 class="text-start">{{i.name}}</h3>
+							<p><strong>Rs. {{i.price}}</strong> per Kg</p>
+							<a href="{% url 'shop:product_details' i.id %}" class="btn btn-info py-2 w-30">Details</a>
+						</div>
+					</div>
+				</div>
+        {% empty %}
+<div style="text-align:center;">
+		<h3>No Results Found</h3>
+</div>
+				{% endfor %}
+
+			</div>
+
+</div>
+{% endblock %}

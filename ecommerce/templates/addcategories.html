@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="container-fluid bg-secondary">
+
+<div style="height:100px;width:100%">
+<div class="px-2 mb-5">
+  <h4 style="text-align:center;text-color:red;">Add Categories</h4>
+    </div>
+</div>
+<div class="container mt-2 p-4">
+<form method="POST" enctype="multipart/form-data">
+  {% csrf_token %}
+<div class="mb-3">
+  <label class="form-label">Category Name</label>
+  <input type="text" class="form-control" name="n" placeholder="Enter the category name">
+</div>
+<div class="mb-3">
+  <label class="form-label">Image</label>
+  <input type="file" class="form-control" name="i">
+</div>
+  <div class="mb-3">
+  <label class="form-label">Category Description</label>
+  <input type="text" class="form-control" name="d" placeholder="Enter description">
+</div>
+
+  <div class="mb-3">
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+</div>
+
+  </form>
+</div>
+
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="container-fluid bg-secondary">
+
+<div style="height:100px;width:100%">
+<div class="px-2 mb-5">
+  <h4 style="text-align:center;text-color:red;">Stock Details</h4>
+    </div>
+</div>
+<div class="container mt-2 p-4">
+<form method="POST" enctype="multipart/form-data">
+  {% csrf_token %}
+<div class="mb-3">
+  <label class="form-label"><strong>Stock</strong></label>
+  <input type="number" class="form-control" value="{{pro.stock}}" name="s" placeholder="Enter the stock">
+</div>
+
+  <div class="mb-3">
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+</div>
+
+  </form>
+</div>
+
+{% endblock %}

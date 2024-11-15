@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="bg-secondary">
+<img src="{{categories.image.url}}" height="400px" width="100%">
+<div>
+	<h1 class="text-center mt-3 text-light">{{categories.name}}</h1>
+	<p class="text-center text-light">{{categories.description}}</p>
+</div>
+	<div class="row p-5 bg-secondary">
+	{% for i in product %}
+				<div class="col-lg-4 col-md-6">
+					<div class="single-latest-news card mx-auto bg-danger" style="width:25rem;">
+						<a href="{% url 'shop:product_details' i.id %}"><img src="{{i.image.url}}" height="200px" width="100%"></a>
+						<div class="news-text-box">
+							<h3 class="text-start">{{i.name}}</h3>
+							<p><strong>Rs. {{i.price}}</strong> per Kg</p>
+							<a href="{% url 'shop:product_details' i.id %}" class="btn btn-info py-2 w-30">Details</a>
+						</div>
+					</div>
+				</div>
+				{% endfor %}
+			</div>
+</div>
+{% endblock %}

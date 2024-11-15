@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="px-2 mb-5 bg-secondary">
+  {% if status == True %}
+    <h4 style="text-align:center;text-color:red;">Payment Successful</h4>
+  {% else %}
+    <h4 style="text-align:center;text-color:red;">Payment Failed. Try Again Later</h4>
+
+  {% endif %}
+    </div>
+
+
+{% endblock %}
+</body>
+</html>
