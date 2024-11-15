@@ -67,17 +67,11 @@
 
 								{% if user.is_superuser == False %}
 
-								<li class="current-list-item"><a href="">About</a></li>
+								<li class="current-list-item"><a href="#abt">About</a></li>
 
-								<li class="current-list-item"><a href="">Contact</a></li>
+								<li class="current-list-item"><a href="#ct">Contact</a></li>
 								<li class="current-list-item"><a href="{% url 'cart:order_view' %}">Your orders</a></li>
-								<li class="current-list-item"><a href="shop.html">Shop</a>
-									<ul class="sub-menu current-list-item">
-										<li><a href="shop.html">Shop</a></li>
-										<li><a href="checkout.html">Check Out</a></li>
-										<li><a href="cart.html">Cart</a></li>
-									</ul>
-								</li>
+
 
 								 {% else %}
 				  <li class="nav-item">
@@ -171,10 +165,9 @@
 					<div class="footer-box pages">
 						<h2 class="widget-title">Pages</h2>
 						<ul>
-							<li><a href="index.html">Home</a></li>
-							<li><a href="about.html">About</a></li>
-							<li><a href="services.html">Shop</a></li>
-							<li><a href="contact.html">Contact</a></li>
+							<li><a href="">Home</a></li>
+							<li><a href="#abt">About</a></li>
+							<li><a href="#ct">Contact</a></li>
 						</ul>
 					</div>
 				</div>
